@@ -22,7 +22,7 @@ class AndroidApplication : Application() {
     private fun initDagger() {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(context = applicationContext))
-            .networkModule(NetworkModule(BuildConfig.BASE_URL))
+            .networkModule(NetworkModule(BuildConfig.BASE_URL, BuildConfig.API_KEY))
             .dataModule(DataModule())
             .build()
     }
