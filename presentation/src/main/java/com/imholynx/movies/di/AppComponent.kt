@@ -1,5 +1,6 @@
 package com.imholynx.movies.di
 
+import com.imholynx.movies.di.common.AppModule
 import com.imholynx.movies.di.common.DataModule
 import com.imholynx.movies.di.common.NetworkModule
 import com.imholynx.movies.di.popular.PopularComponent
@@ -10,7 +11,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AppComponent::class,
+        AppModule::class,
         NetworkModule::class,
         DataModule::class
     ]
