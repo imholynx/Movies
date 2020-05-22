@@ -1,0 +1,4 @@
+rootProject.name='Movies'
+include ':presentation'
+include ':data'
+include ':domain'
