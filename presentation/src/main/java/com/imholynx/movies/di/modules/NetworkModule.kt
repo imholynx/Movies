@@ -1,5 +1,6 @@
 package com.imholynx.movies.di.modules
 
+import com.imholynx.data.api.RestApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -22,5 +23,11 @@ class NetworkModule(private val baseUrl: String) {
             .baseUrl(baseUrl)
             .client(okHttpClient)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRestApi(retrofit: Retrofit): RestApi {
+        return retrofit.create(RestApi::class.java)
     }
 }
