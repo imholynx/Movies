@@ -1,4 +1,4 @@
-package com.imholynx.movies.di.modules
+package com.imholynx.movies.di.common
 
 import android.content.Context
 import dagger.Module

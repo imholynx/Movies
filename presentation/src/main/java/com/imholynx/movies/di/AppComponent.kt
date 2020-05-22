@@ -1,7 +1,9 @@
 package com.imholynx.movies.di
 
-import com.imholynx.movies.di.modules.DataModule
-import com.imholynx.movies.di.modules.NetworkModule
+import com.imholynx.movies.di.common.DataModule
+import com.imholynx.movies.di.common.NetworkModule
+import com.imholynx.movies.di.popular.PopularComponent
+import com.imholynx.movies.di.popular.PopularModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,4 +17,5 @@ import javax.inject.Singleton
 )
 interface AppComponent {
 
+    fun plus(popularModule: PopularModule): PopularComponent
 }

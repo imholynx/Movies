@@ -1,4 +1,4 @@
-package com.imholynx.movies.di.modules
+package com.imholynx.movies.di.common
 
 import com.imholynx.data.api.RestApi
 import com.imholynx.data.repository.MoviesDataRepository
