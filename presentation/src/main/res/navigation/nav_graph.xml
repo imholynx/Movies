@@ -14,7 +14,7 @@
         android:id="@+id/listFragment"
         android:name="com.imholynx.movies.ui.list.ListFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/list_fragment" >
         <action
             android:id="@+id/action_listFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
