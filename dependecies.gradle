@@ -2,7 +2,11 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
 
-    room = "android.arch.persistence.room:runtime:1.0.0"
+    def room_version = '2.1.0'
+
+    room = "androidx.room:room-runtime:$room_version"
+    roomCompiler = "androidx.room:room-compiler:$room_version"
+    roomRxJava = "androidx.room:room-rxjava2:$room_version"
     rxJava = "io.reactivex.rxjava2:rxjava:2.1.6"
     dagger = "com.google.dagger:dagger:2.13"
     daggerCompiler = "com.google.dagger:dagger-compiler:2.13"

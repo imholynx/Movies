@@ -1,9 +1,9 @@
 package com.imholynx.data.repository
 
-import com.imholynx.domain.entity.MovieEntity
+import com.imholynx.data.entity.MovieData
 import io.reactivex.Observable
 
 interface MoviesDataStore {
 
-    fun getPopular(): Observable<List<MovieEntity>>
+    fun getPopular(): Observable<List<MovieData>>
 }

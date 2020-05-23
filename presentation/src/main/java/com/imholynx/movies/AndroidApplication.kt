@@ -1,6 +1,7 @@
 package com.imholynx.movies
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.imholynx.movies.di.AppComponent
 import com.imholynx.movies.di.DaggerAppComponent
 import com.imholynx.movies.di.common.AppModule
@@ -17,6 +18,9 @@ class AndroidApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initDagger();
+        if(BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this);
+        }
     }
 
     private fun initDagger() {
