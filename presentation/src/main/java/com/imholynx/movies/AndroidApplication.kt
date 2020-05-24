@@ -7,28 +7,29 @@ import com.imholynx.movies.di.DaggerAppComponent
 import com.imholynx.movies.di.common.AppModule
 import com.imholynx.movies.di.common.DataModule
 import com.imholynx.movies.di.common.NetworkModule
+import com.imholynx.movies.di.details.DetailsComponent
+import com.imholynx.movies.di.details.DetailsModule
 import com.imholynx.movies.di.popular.PopularComponent
 import com.imholynx.movies.di.popular.PopularModule
 
 class AndroidApplication : Application() {
 
-    private lateinit var appComponent: AppComponent
-    private var popularComponent: PopularComponent? = null
-
-    override fun onCreate() {
-        super.onCreate()
-        initDagger();
-        if(BuildConfig.DEBUG){
-            Stetho.initializeWithDefaults(this);
-        }
-    }
-
-    private fun initDagger() {
-        appComponent = DaggerAppComponent.builder()
+    private val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        DaggerAppComponent.builder()
             .appModule(AppModule(context = applicationContext))
             .networkModule(NetworkModule(BuildConfig.BASE_URL, BuildConfig.API_KEY))
             .dataModule(DataModule())
             .build()
+    }
+
+    private var popularComponent: PopularComponent? = null
+    private var detailsComponent: DetailsComponent? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this);
+        }
     }
 
     fun plusPopularComponent(): PopularComponent {
@@ -40,5 +41,13 @@ class AndroidApplication : Application() {
         popularComponent = null
     }
 
+    fun plusDetailsComponent(): DetailsComponent {
+        detailsComponent = appComponent.plus(DetailsModule())
+        return detailsComponent!!
+    }
+
+    fun clearDetailsComponent() {
+        detailsComponent = null
+    }
 
 }
