@@ -9,7 +9,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.imholynx.movies.ui.details.DetailsFragment"
         android:label="details_fragment"
-        tools:layout="@layout/details_fragment" />
+        tools:layout="@layout/details_fragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/listFragment"
         android:name="com.imholynx.movies.ui.list.ListFragment"

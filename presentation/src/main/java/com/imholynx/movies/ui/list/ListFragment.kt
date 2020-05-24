@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.imholynx.movies.R
 import com.imholynx.movies.ui.common.BaseFragment
 import com.xwray.groupie.GroupAdapter
@@ -30,6 +31,13 @@ class ListFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this, listViewModelFactory)
             .get(ListViewModel::class.java)
         groupAdapter = GroupAdapter()
+        groupAdapter.setOnItemClickListener { item, view ->
+            run {
+                val action =
+                    ListFragmentDirections.actionListFragmentToDetailsFragment((item as MovieItem).movieId)
+                findNavController().navigate(action)
+            }
+        }
     }
 
     override fun layoutId() = R.layout.list_fragment
@@ -37,7 +45,13 @@ class ListFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.movies.observe(viewLifecycleOwner, Observer {
-            groupAdapter.update(it.map { movie -> MovieItem(movie.title, movie.posterPath) })
+            groupAdapter.update(it.map { movie ->
+                MovieItem(
+                    movie.id,
+                    movie.title,
+                    movie.posterPath
+                )
+            })
         })
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             progress_bar.visibility = if (it) View.VISIBLE else View.GONE

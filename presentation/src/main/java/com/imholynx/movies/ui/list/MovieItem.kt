@@ -7,7 +7,8 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.movie_item.*
 
 
-class MovieItem(private val title: String, private val imageUrl: String) : Item() {
+class MovieItem(val movieId: Int, private val title: String, private val imageUrl: String) :
+    Item() {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         Glide.with(viewHolder.itemView)
