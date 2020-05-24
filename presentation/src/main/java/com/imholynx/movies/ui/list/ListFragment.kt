@@ -1,21 +1,17 @@
 package com.imholynx.movies.ui.list
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
-import com.imholynx.movies.AndroidApplication
 import com.imholynx.movies.R
+import com.imholynx.movies.ui.common.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
-class ListFragment : Fragment() {
+class ListFragment : BaseFragment() {
 
     @Inject
     lateinit var listViewModelFactory: ListViewModelFactory
@@ -30,19 +26,13 @@ class ListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity?.application as AndroidApplication).plusPopularComponent().inject(this)
+        androidApplication.plusPopularComponent().inject(this)
         viewModel = ViewModelProviders.of(this, listViewModelFactory)
             .get(ListViewModel::class.java)
         groupAdapter = GroupAdapter()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        val view = inflater.inflate(R.layout.list_fragment, container, false)
-        ButterKnife.bind(this, view)
-        return view
-    }
+    override fun layoutId() = R.layout.list_fragment
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -71,7 +61,7 @@ class ListFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        (activity?.application as AndroidApplication).clearPopularComponent()
+        androidApplication.clearPopularComponent()
     }
 
 }
