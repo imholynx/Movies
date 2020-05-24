@@ -18,6 +18,9 @@ data class MovieData(
     @SerializedName("poster_path")
     var posterPath: String,
 
+    @SerializedName("overview")
+    var overview: String,
+
     @ColumnInfo(name = "last_fetch")
     var lastFetch: Long = System.currentTimeMillis()
 )

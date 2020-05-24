@@ -44,7 +44,7 @@ class DetailsFragment : BaseFragment() {
                 .load(it.posterPath)
                 .into(poster)
             title.text = it.title
-            description.text = it.title
+            overview.text = it.overview
         })
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             progress_bar.visibility = if (it) View.VISIBLE else View.GONE

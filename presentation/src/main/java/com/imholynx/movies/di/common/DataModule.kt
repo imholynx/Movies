@@ -36,6 +36,7 @@ class DataModule {
     @Provides
     fun provideMoviesDatabase(context: Context): MoviesDatabase {
         return Room.databaseBuilder(context, MoviesDatabase::class.java, "movies_db")
+            .fallbackToDestructiveMigration()
             .build()
     }
 

@@ -11,7 +11,8 @@ object MovieDataMovieEntityMapper {
         return MovieEntity(
             movieData.id,
             movieData.title,
-            posterPrefix + movieData.posterPath
+            posterPrefix + movieData.posterPath,
+            movieData.overview
         )
     }
 }

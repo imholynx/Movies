@@ -24,7 +24,7 @@
             tools:text="@tools:sample/lorem/random" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/overview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"

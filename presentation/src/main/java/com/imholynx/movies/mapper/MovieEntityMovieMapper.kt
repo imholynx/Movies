@@ -9,7 +9,8 @@ object MovieEntityMovieMapper {
         return Movie(
             movieEntity.id,
             movieEntity.title,
-            movieEntity.posterPath
+            movieEntity.posterPath,
+            movieEntity.overview
         )
     }
 }
