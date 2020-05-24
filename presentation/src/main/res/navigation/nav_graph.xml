@@ -9,7 +9,7 @@
         android:id="@+id/detailsFragment"
         android:name="com.imholynx.movies.ui.details.DetailsFragment"
         android:label="details_fragment"
-        tools:layout="@layout/details_fragment" >
+        tools:layout="@layout/details_fragment">
         <argument
             android:name="movieId"
             app:argType="integer" />
@@ -18,9 +18,13 @@
         android:id="@+id/listFragment"
         android:name="com.imholynx.movies.ui.list.ListFragment"
         android:label="main_fragment"
-        tools:layout="@layout/list_fragment" >
+        tools:layout="@layout/list_fragment">
         <action
             android:id="@+id/action_listFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 </navigation>
