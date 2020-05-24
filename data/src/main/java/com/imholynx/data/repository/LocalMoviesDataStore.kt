@@ -12,6 +12,10 @@ class LocalMoviesDataStore(private val moviesDao: MoviesDao) : MoviesDataStore {
         return moviesDao.getMovies()
     }
 
+    fun getMovieById(id: Int): Maybe<MovieData> {
+        return moviesDao.getMovieById(id)
+    }
+
     fun addMovies(movies: List<MovieData>): Completable {
         return moviesDao.insertAll(movies)
     }

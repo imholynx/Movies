@@ -6,6 +6,7 @@ import com.imholynx.data.utils.NetworkBoundResource
 import com.imholynx.domain.entity.MovieEntity
 import com.imholynx.domain.repository.MoviesRepository
 import io.reactivex.Completable
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -43,6 +44,11 @@ class MoviesDataRepository(
 
         }.asObservable()
             .map { it.map(MovieDataMovieEntityMapper::transform) }
+    }
+
+    override fun getMovieById(id: Int): Maybe<MovieEntity> {
+        return localMoviesDataStore.getMovieById(id)
+            .map(MovieDataMovieEntityMapper::transform)
     }
 
     fun isExpired(time: Long): Boolean {
