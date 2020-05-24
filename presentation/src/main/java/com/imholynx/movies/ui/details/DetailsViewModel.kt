@@ -1,7 +1,11 @@
 package com.imholynx.movies.ui.details
 
-import androidx.lifecycle.ViewModel
+import com.imholynx.domain.usecase.GetMovieUseCase
+import com.imholynx.movies.ui.common.BaseViewModel
 
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel(
+    private val getMovieUseCase: GetMovieUseCase,
+    private val movieId: Int
+) : BaseViewModel() {
     // TODO: Implement the ViewModel
 }

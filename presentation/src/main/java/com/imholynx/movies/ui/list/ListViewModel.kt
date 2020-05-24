@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.imholynx.domain.usecase.GetPopularUseCase
 import com.imholynx.movies.entity.Movie
 import com.imholynx.movies.mapper.MovieEntityMovieMapper
+import com.imholynx.movies.ui.common.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ListViewModel(private val getPopularUseCase: GetPopularUseCase) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
+class ListViewModel(private val getPopularUseCase: GetPopularUseCase) : BaseViewModel() {
 
     private val _movies: MutableLiveData<List<Movie>> = MutableLiveData()
     val movies: LiveData<List<Movie>> = _movies
@@ -46,10 +45,6 @@ class ListViewModel(private val getPopularUseCase: GetPopularUseCase) : ViewMode
                 _loading.value = false
             })
         )
-    }
-
-    override fun onCleared() {
-        compositeDisposable.clear()
     }
 
     fun onRetry() {
